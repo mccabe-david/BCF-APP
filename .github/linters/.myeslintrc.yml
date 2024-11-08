@@ -1,0 +1,72 @@
+---
+env:
+  browser: true
+  es6: true
+  jest: true
+
+ignorePatterns:
+  - "!.*"
+  - "**/node_modules/.*"
+  - "**/__tests__/*"
+  - "**/Browse.tsx"
+
+parser: "@typescript-eslint/parser"
+
+plugins:
+  - "@typescript-eslint"
+
+overrides:
+  # JSON files
+  - files:
+      - "*.json"
+    extends:
+      - plugin:jsonc/recommended-with-json
+    parser: jsonc-eslint-parser
+    parserOptions:
+      jsonSyntax: JSON
+
+  # JSONC files
+  - files:
+      - "*.jsonc"
+    extends:
+      - plugin:jsonc/recommended-with-jsonc
+    parser: jsonc-eslint-parser
+    parserOptions:
+      jsonSyntax: JSONC
+
+  # JSON5 files
+  - files:
+      - "*.json5"
+    extends:
+      - plugin:jsonc/recommended-with-json5
+    parser: jsonc-eslint-parser
+    parserOptions:
+      jsonSyntax: JSON5
+
+    # TSX files
+  - files:
+      - "*.{ts,tsx}"
+    extends:
+      - eslint:recommended
+      - plugin:@typescript-eslint/disable-type-checked
+      - plugin:@typescript-eslint/strict-type-checked
+    rules: {
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-floating-promises": off,
+      "@typescript-eslint/no-unsafe-argument": off,
+      "@typescript-eslint/no-unsafe-assignment": off,
+      "@typescript-eslint/no-unsafe-call": off,
+      "@typescript-eslint/no-unsafe-member-access": off,
+      "@typescript-eslint/no-unsafe-return": off,
+      "@typescript-eslint/restrict-plus-operands": off,
+      "default-param-last": off,
+      "@typescript-eslint/default-param-last": "error",
+      "no-magic-numbers": "warn",
+      "no-trailing-spaces": "error",
+      "no-unreachable-loop": "error",
+      "no-var": "error",
+      "quotes": ["error", "single"]
+    }
+    parserOptions: 
+      projectService: true
+      project: ".github/linters/tsconfig.json"

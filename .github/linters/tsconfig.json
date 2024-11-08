@@ -1,0 +1,14 @@
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "jsx": "react",
+    "module": "ES2022", 
+    "moduleResolution": "node",
+    "skipLibCheck": true,       
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": true
+  },
+  "exclude": ["../../node_modules/*", "../../__tests__/*", "**/*.d.ts", "**/app.d.ts", "**/react-app-env.d.ts", "**/declarations.d.ts", "../../**/Browse.tsx", "../../**/Home.tsx"],
+  "include": ["../../**/*.tsx", "../../**/*.ts"]
+}
